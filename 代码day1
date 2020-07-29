@@ -1,0 +1,139 @@
+一、常用方法及快捷键
+（1）注释
+单行注释      #       例： #这是一行注释
+多行注释     '''
+            '''      例：  '''
+                           上下各三个单引号表示多行注释
+                           '''
+ (2)快捷键
+ ctrl+D  复制 
+ ctrl+Z  回退
+ 
+（3）其他注意事项
+1.程序由上至下依次执行
+2.需要创建函数(方法)
+3.可以定义类，创建对象
+爬虫,数据分析,机器学习，图像识别---->Anaconda ,社区版的Pycharm ,专业版的pycharm，VS
+网页，服务器(Flask) --- 专业版的pycharm(激活),VS
+
+二、引入并打印所有关键字
+import  keyword
+print(keyword.kwlist)
+
+三、基本运算
+比较: >,>=,<,<=,==,!=
+逻辑运算  and(&)   or(|)
+判断: is  ,is not
+包含: in   ,not in
+
+四、分支语句 if
+1.if 表达式:
+   代码
+
+2.if 表达式:
+    代码
+ else:
+    代码
+3.
+if 表达式:
+    代码
+elif  表达式:
+    代码
+elif  表达式:
+    代码
+elif  表达式:
+    代码
+...
+ else:
+   代码
+
+五、
+序列: 元组,列表,字典,set集合,range
+元组(): 只能查询
+列表:[]  增加，删除，更新，查询   --元素有序，但是可重复
+字典:{}key-value
+set:{}  元素无序，但是唯一
+range：()  区间数据
+
+例：
+list1=[3,4,5,6,2,1,3,3,3,4,4,5,2,2,1,1]
+#在尾部添加
+list1.append("abc")
+print(list1)
+
+#在指定位置添加数据
+list1.insert(1,"a")
+print(list1)
+
+#更新
+list1[0]=123
+print(list1)
+
+#删除，根据下标删除
+list1.pop(1)
+print(list1)
+
+#根据值删除
+list1.remove(123)
+print(list1)
+
+#查询
+print(list1[0])
+print(list1[0:5]) #左闭右开[ )
+print(list1[2:5])
+print(list1[1:10:2])
+print(list1[::])
+print(list1[::2])
+print(list1[-2])
+print(list1[::-2])
+
+#元组
+tuple1 =(2,5,7,8,1,2,3,4)
+print(tuple1[1:7])
+
+#字典
+dict1 ={"name":"小明" , "age":19}
+
+#查询
+print(dict1.get("name"))
+print(dict1["name"])
+
+#更新和添加
+dict1["sex"]="男"
+dict1["name"]="Jack"
+print(dict1)
+
+#删除
+dict1.pop("name")
+print(dict1)
+print(dict1.keys())
+print(dict1.values())
+
+#set
+set1={1,2,3,3,4,5,5,6,7,87,8,8,8,9,9,0,1,2,3,4}
+print(set1)
+set1.add(1)
+print(set1)
+set2={2,3,4,5,6,7,8,9,123,123456}
+
+print(set1&set2)
+print(set1|set2)
+print(set1-set2)
+
+六、循环四要素
+1.变量初始化
+2.循环结束条件
+3.循环体
+4.代码段
+while 表达式(循环条件):
+   代码段
+for  i  in 序列:
+   代码段
+continue和break
+
+七、函数
+def 函数名称():
+    代码块
+例：
+def method1():
+    print("第一个方法")
