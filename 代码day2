@@ -1,0 +1,156 @@
+要点：函数的定义，py文件的引用，关键字“import”,异常与捕获，数据的写入与读取，python操作数据库
+
+源代码：
+按顺序为：User.py
+         Demo1.py
+         Demo2.py
+         Demo3.py
+         Demo4.py
+
+#User.py
+def eat():
+    print("吃....")
+
+def add(a,b):
+    return a+b
+
+if __name__  =="__main__":
+   print("User python文件")
+   
+   
+   
+   
+#Demo1.py
+import User
+User.eat()
+result = User.add(1,5)
+print(result)
+
+# from User import *
+# eat()
+
+'''
+1.数据库  pymysql
+2.numpy:科学计算库
+3.pandas:数据分析库
+4.matplotlib 可视化库
+5.requests 爬虫库
+6.BeautifulSoup4  bs4 爬虫库
+7.flask  服务器包
+8.Django  服务器包
+9.sklearn  机器学习库
+10.TensorFlow   深度学习框架
+11.Keras 库
+'''
+import pymysql
+# print("123")
+if __name__  =="__main__":
+    print("test")
+
+
+
+
+
+#Demo2.py
+'''
+try: 有可能会出现异常的代码
+except: 捕获异常
+finally：最终
+
+'''
+try:
+  print(5/0)
+  print("try...")
+except Exception as e:
+    print(e)
+finally:
+    print("最终")
+    
+    
+    
+    
+#Demo3.py
+'''
+参照物是代码
+'''
+
+#写数据
+def write():
+     #1.打开文件
+    f = open("test.txt","w")
+     #2.写数据
+    f.write("abcdefgh")
+     #3.G关闭
+    f.close()
+# write()
+
+#读取数据
+def read():
+  f = open("test.txt","r")
+  result = f.read()
+  print(result)
+  f.close()
+read()
+
+
+
+
+
+#Demo4.py
+'''
+python操作数据库
+'''
+import  pymysql
+#添加，删除，更新
+def update():
+    #1.连接数据库
+    conn = pymysql.connect(
+        host="localhost",  # 数据库的ip地址
+        port=3306,  # 数据库的端口号
+        user='root',  # 数据库的用户名
+        password="root",  # 数据库密码
+        db="mypython",  # 数据库名称
+        charset="utf8"  # 数据库编码格式
+    )
+    print(conn)
+    #2.创建游标
+    cls = conn.cursor()
+    #3.执行sql语句
+    #1.添加
+    # rows =cls.execute("insert into myuser values(null,%s,%s)",["lisi",'678'])
+    #2.更新
+    # rows =cls.execute("update  myuser set uname =%s where uid=%s",["tom",6])
+    #3.删除
+    rows = cls.execute("delete from myuser  where uid=%s", [7])
+    print(rows)
+    #4.提交
+    conn.commit()
+    #5.关闭，资源释放
+    conn.close()
+# update()
+
+#查询
+def show():
+    conn = pymysql.connect(
+        host="localhost",  #数据库的ip地址
+        port=3306,   #数据库的端口号
+        user='root',   #数据库的用户名
+        password ="root",  #数据库密码
+        db="mypython"  ,#数据库名称
+        charset="utf8"  #数据库编码格式
+    )
+    cls = conn.cursor()
+    #单条查询
+    # cls.execute("select * from myuser where uid=%s",[2])
+    # result =  cls.fetchone()
+    # print(result)
+
+    #多条查询
+    cls.execute("select * from myuser where uid>%s",[1])
+    result = cls.fetchall()
+    print(result)
+    cls.close()
+
+show()
+
+    
