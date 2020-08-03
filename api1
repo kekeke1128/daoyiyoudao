@@ -1,0 +1,35 @@
+import base64
+from flask import request, jsonify, json
+from flask import Flask
+import os
+import random, string
+
+app = Flask(__name__)
+
+@app.route('/hello')
+def hello():
+    return "hello"
+
+
+@app.route("/photo", methods=["POST"])
+def login():
+    print('hh')
+    uid = request.json.get('id')
+    print(uid)
+    img = request.json.get('img')
+    print(img)
+    decode_img = base64.b64decode(img)
+    #$ sudo chmod -R 777 "user_data/"
+    file_path = r'C:/user_data/'
+    img_name = uid + '.jpg'
+    file_paths = os.path.join(file_path, img_name)
+    file = open(file_paths, 'wb')
+    file.write(decode_img)
+    file.close()
+    res ={"master": "success"}
+    return jsonify(res), 201
+# 定义路由
+
+
+if __name__ == "__main__":
+        app.run(host = '0.0.0.0', port=5000, debug=True)
